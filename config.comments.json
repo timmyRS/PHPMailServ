@@ -1,0 +1,30 @@
+// Note: Comments don't work in JSON, so don't actually use comments in the actual config.json
+{
+	"motd": "You've reached a PHPMailServ server. (Ohh no!)", // What users see opon connecting
+	"hostname": "localhost", // Returned in the HELO and EHLO command
+	"size": 10240000, // Max. size (in bytes) for received emails
+	"users": { // Ensure that all usernames are lowercase
+		// Priority Order:
+		// 1. user@domain
+		// 2. user@wildcard
+		// 3. wildcard@domain
+		// 4. wildcard@wildcard
+		// You can use "dontend" to go down one more
+		"wildcard@example.com": { // This catches all emails at @example.com, if username is not caught otherwise (See Priority Order)
+			"folder": "example_wildcard", // This would default to wildcard__example.com
+			"dontend": true // With this set this to true, it will also execute wildcard@wildcard (See Priority Order)
+		},
+		"user@example.com": {}, // Emails will be stored in the user__example.com folder
+		"wildcard@wildcard": { // This account will receive *every* email (See Priority Order)
+			"folder": "wildcard" // This would default to wildcard__wildcard
+		},
+		"user@wildcard": { // Recieves emails to user "user" in every possible domain, folder defaults to user__wildcard
+			"auth": "MTIzNDU2" // Set this to any base64-encoded password to enable authentication. Authentication can not be enabled for "wildcard" users
+			// Note that user@example.com has no authentication enabled, but you will still be able to login as user@example.com
+		}
+	},
+	"sender_blacklist": [ // Senders, who are not allowed to send emails to this server
+		"wildcard@localhost", // Wildcards are supported here as well
+		"spammer@localhost" // If you want to allow email sending from localhost, but not by any random person, you can use authentication
+	]
+}

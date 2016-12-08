@@ -1,0 +1,22 @@
+{
+	"motd": "You've reached a PHPMailServ server. (Ohh no!)",
+	"hostname": "localhost",
+	"size": 10240000,
+	"users": {
+		"wildcard@example.com": {
+			"folder": "example_com_wild",
+			"dontend": true
+		},
+		"user@example.com": {},
+		"wildcard@wildcard": {
+			"folder": "wildcard"
+		},
+		"user@wildcard": {
+			"auth": "MTIzNDU2"
+		}
+	},
+	"sender_blacklist": [
+		"wildcard@localhost",
+		"spammer@localhost"
+	]
+}
