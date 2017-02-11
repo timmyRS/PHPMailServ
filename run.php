@@ -23,7 +23,7 @@ if($config==null)
 require "src/EmailAddr.class.php";
 if(empty($config["users"]))
 {
-	die("ERROR: `users` is not defined in config.json");
+	die("ERROR: `users` is not defined in config.json\n");
 }
 if(empty($config["motd"]))
 {
