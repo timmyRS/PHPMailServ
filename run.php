@@ -57,10 +57,10 @@ foreach($config["users"] as $name => $data)
 unset($config["users"]);
 echo "Loaded ".count($addrs)." addresses.\n";
 
-$sSocket = socket_create(AF_INET, SOCK_STREAM, 0) or die("Socket Error #1\n");
-socket_set_option($sSocket, SOL_SOCKET, SO_REUSEADDR, 1) or die("Socket Error #2\n");
-socket_bind($sSocket, "0.0.0.0",25) or die("Socket Error #3\n");
-socket_listen($sSocket) or die("Socket Error #4\n");
+$sSocket = socket_create(AF_INET, SOCK_STREAM, 0) or die();
+socket_set_option($sSocket, SOL_SOCKET, SO_REUSEADDR, 1) or die();
+socket_bind($sSocket, "0.0.0.0",25) or die();
+socket_listen($sSocket) or die();
 echo "Listening on <0.0.0.0:25>...\n";
 
 $connections = [];

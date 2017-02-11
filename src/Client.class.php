@@ -208,7 +208,7 @@ class Client
 				case "RCPT":
 				if($this->mail_from == "")
 				{
-					$this->disconnect("What kind of bad thing are you?");
+					$this->disconnect("221 What kind of bad thing are you?");
 				} else
 				{
 					$arg = strtoupper(trim(substr($this->line, 4, 4)));
@@ -264,7 +264,7 @@ class Client
 				case "DATA":
 				if($this->mail_from == "" || $this->rcpt_to == "")
 				{
-					$this->disconnect("What kind of bad thing are you?");
+					$this->disconnect("221 What kind of bad thing are you?");
 				} else
 				{
 					$this->action = "DATA";
